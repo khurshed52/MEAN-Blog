@@ -9,6 +9,6 @@
 <div *ngFor="let item of blog">
     <p> {{item.title}}</p>
     <p> {{item.author}}</p>
-    <p> {{item.date}}</p>
+    <p> {{item.date | date}}</p>
     <p> {{item.content}}</p>
 </div>
