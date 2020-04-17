@@ -36,6 +36,13 @@ export class BlogComponent implements OnInit {
       this._blog.addBlog(title, author, date, content).subscribe();
       this.blogForm.reset();
       $("#blogModal").modal("hide");
+      Swal.fire({
+        position: 'top-end',
+        type: 'success',
+        title: 'Your blog has been saved',
+        showConfirmButton: false,
+        timer: 1500
+      })
   }
 
   //reset form
