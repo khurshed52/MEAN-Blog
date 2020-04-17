@@ -1,0 +1,14 @@
+<form [formGroup]="blogForm">
+    <input type="text" formControlName="title" #title>
+    <input type="text" formControlName="author" #author>
+    <input type="date" formControlName="date" #date>
+    <input type="text" formControlName="content" #content>
+    <button (click)="save(title.value, author.value, date.value, content.value )"> Save </button>
+</form>
+
+<div *ngFor="let item of blog">
+    <p> {{item.title}}</p>
+    <p> {{item.author}}</p>
+    <p> {{item.date}}</p>
+    <p> {{item.content}}</p>
+</div>

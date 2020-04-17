@@ -1,0 +1,39 @@
+<table class="table">
+    <thead>
+      <!-- <th>id</th> -->
+      <th>Name</th>
+      <th>Age</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of employes">
+        <!-- <td>{{item.id}}</td> -->
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+        <td>
+            <button (click)="delete($event, item)">Delete</button>
+            <button (click)="edit($event, item)">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!--edit form-->
+
+  <div *ngFor="let item of employes">
+  <div *ngIf="editing && editingProduct.id == item.id">
+    <form (ngSubmit)="updateEmploye()">
+      <input type="text" name="name" [(ngModel)]="editingProduct.name">
+      <input type="text" name="age" [(ngModel)]="editingProduct.age">
+      <button type="submit">
+        Update
+      </button>
+    </form>
+  </div>
+</div>
+
+
+  <form class="create-form" [formGroup]="exampleForm" novalidate (ngSubmit)="onSubmit(exampleForm.value)">
+    <input type="text" formControlName="name" #name>
+    <input type="text" formControlName="age" #age>
+    <button type="submit" [disabled]="exampleForm.pristine || exampleForm.invalid">Create</button>
+  </form>
