@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 export class BlogService {
 
   constructor(private http: HttpClient) { }
-  private blogUrl= 'http://localhost:3000/api/blog';
-  private blogDelUrl= 'http://localhost:3000/api/blog/';
+  private blogUrl= 'https://user-mean-test.herokuapp.com/api/blog';
+  private blogDelUrl= 'https://user-mean-test.herokuapp.com/api/blog/';
 
   
   // get blog
