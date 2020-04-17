@@ -38,6 +38,11 @@ export class BlogComponent implements OnInit {
       $("#blogModal").modal("hide");
   }
 
+  //reset form
+  public reset() {
+    this.blogForm.reset()
+  }
+
   // edit data
   public edit(id: any) {
    this.router.navigate([`/edit/${id}`])

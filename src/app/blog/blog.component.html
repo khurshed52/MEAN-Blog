@@ -1,14 +1,58 @@
-<form [formGroup]="blogForm">
-    <input type="text" formControlName="title" #title>
-    <input type="text" formControlName="author" #author>
-    <input type="date" formControlName="date" #date>
-    <input type="text" formControlName="content" #content>
-    <button (click)="save(title.value, author.value, date.value, content.value )"> Save </button>
-</form>
+<button mat-raised-button color="primary" data-toggle="modal" data-target="#blogModal"> Add Blog </button>
 
-<div *ngFor="let item of blog">
-    <p> {{item.title}}</p>
-    <p> {{item.author}}</p>
-    <p> {{item.date | date}}</p>
-    <p> {{item.content}}</p>
+<!--form modal-->
+<div class="modal fade" id="blogModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Blog</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="blogForm" class="example-form">
+          <mat-form-field class="example-full-width">
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title" #title>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Author</mat-label>
+            <input matInput formControlName="author" #author>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date" #date>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Content</mat-label>
+            <input matInput formControlName="content" #content>
+          </mat-form-field>
+          <div class="modal-footer">
+            <button type="button" mat-raised-button color="warn" data-dismiss="modal">Close</button>
+            <button mat-raised-button color="primary" (click)="reset()">Reset</button>
+            <button mat-raised-button color="accent" [disabled]="blogForm.pristine || blogForm.invalid"
+            (click)="save(title.value, author.value, date.value, content.value )"> Save </button>
+          </div>
+         
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--data -->
+<div class="row">
+<div class="col-md-3 col-12" *ngFor="let item of blog">
+  <p> {{item.title}}</p>
+  <p> {{item.author}}</p>
+  <p> {{item.date | date}}</p>
+  <p> {{item.content}}</p>
+</div>
 </div>
