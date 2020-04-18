@@ -14,6 +14,7 @@ export class BlogComponent implements OnInit {
   public blog:Blog[];
   blogForm: FormGroup;
   options = { autoHide: false, scrollbarMinSize: 50 }; // scroll 
+  public loading:boolean = true
   constructor(private _blog: BlogService, private fb: FormBuilder, private router: Router ) { 
     this.blogForm = this.fb.group({
       title:['', Validators.required],
@@ -26,7 +27,8 @@ export class BlogComponent implements OnInit {
   ngOnInit() {
     this._blog.getData().subscribe(
       data => {
-        this.blog = data
+        this.blog = data;
+        this.loading = false
       }
     )
   }
