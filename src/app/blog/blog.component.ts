@@ -20,7 +20,7 @@ export class BlogComponent implements OnInit {
       title:['', Validators.required],
       author:['', Validators.required],
       date:['', Validators.required],
-      content:['', [Validators.required, Validators.maxLength(200)]],
+      content:['', Validators.required],
     })
   }
 

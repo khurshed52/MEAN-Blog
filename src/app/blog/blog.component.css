@@ -78,3 +78,19 @@ ngx-simplebar {
     width: 50%;
     position: relative;
 }
+
+.blog-content {
+    height: 122px;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.read-all {
+   display: flex;
+    justify-content: flex-end;
+    margin: 5px;
+} 
+
+

@@ -67,9 +67,37 @@
         </div>
         <div class="content-area content">
           <p> {{item.date | date}}</p>
-          <ngx-simplebar [options]="options">
+          <!-- <ngx-simplebar [options]="options">
             <p> {{item.content}}</p>
-          </ngx-simplebar>
+          </ngx-simplebar> -->
+          <div class="blog-content">
+            <p> {{item.content}}</p>
+          </div>
+          <div class="read-all">
+            <button matTooltip="Read More" data-toggle="modal" [attr.data-target]="'#' + item.title"> <span class="material-icons">arrow_right_alt</span> </button>
+          </div>
+          <!--read more modal start here-->
+          <div class="modal fade" [attr.id]='item.title' tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">{{item.title}}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <ngx-simplebar [options]="options">
+                     <p> {{item.content}}</p>
+                   </ngx-simplebar> 
+                </div>
+                <div class="modal-footer">
+                  <button type="button" mat-raised-button color="warn" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+           <!--read more modal end here-->
           <button type="button" mat-raised-button color="warn" (click)="delete(item._id)"><span class="material-icons">
             delete</span></button>
             <button type="button" mat-raised-button color="primary" (click)="edit(item._id)"><span class="material-icons">

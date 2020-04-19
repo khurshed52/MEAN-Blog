@@ -19,6 +19,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { EmployeService } from './services/employe.service';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MatNativeDateModule,
     Ng2SearchPipeModule,
     MatButtonModule,
+    MatTooltipModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule
   ],
