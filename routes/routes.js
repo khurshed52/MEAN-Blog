@@ -46,4 +46,24 @@ router.delete('/blog/:id', (req, res)=> {
     })
 })
 
+// edit api
+
+//edit api 
+router.put('/blog/:id', (req, res) => {
+    Blog.findByIdAndUpdate(req.params.id, {
+            $set: { title: req.body.title, author: req.body.author, date: req.body.date, content:req.body.content }
+        }, {
+            new: true
+        },
+        (err, updatedBlog) => {
+            if (err) {
+                res.send("Error updating Blog");
+            } else {
+                res.json(updatedBlog);
+            }
+        }
+
+    );
+})
+
 module.exports = router

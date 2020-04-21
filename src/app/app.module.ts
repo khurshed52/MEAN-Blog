@@ -20,7 +20,6 @@ import { environment } from '../environments/environment';
 import { EmployeService } from './services/employe.service';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
 @NgModule({
   declarations: [
     AppComponent,

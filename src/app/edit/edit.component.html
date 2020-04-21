@@ -1,1 +1,32 @@
-test
+<div class="row">
+    <div class="col-md-6 col-sm-6 col-lg-6 col-md-12">
+        <form [formGroup]="updateBlogForm" class="example-form">
+            <mat-form-field class="example-full-width">
+              <mat-label>Title</mat-label>
+              <input matInput formControlName="title" #title>
+            </mat-form-field>
+        
+            <mat-form-field class="example-full-width">
+              <mat-label>Author</mat-label>
+              <input matInput formControlName="author" #author>
+            </mat-form-field>
+        
+            <mat-form-field class="example-full-width">
+              <mat-label>Date</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="date" #date>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        
+            <mat-form-field class="example-full-width">
+              <mat-label>Content</mat-label>
+              <input matInput formControlName="content" #content>
+            </mat-form-field>  
+            
+            <div>
+                <button mat-raised-button color="accent" [disabled]="updateBlogForm.pristine || updateBlogForm.invalid"
+                (click)="update(title.value, author.value, date.value, content.value )"> Save </button>
+            </div>
+          </form>
+    </div>
+</div>

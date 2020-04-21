@@ -17,6 +17,11 @@ export class BlogService {
     return this.http.get<Blog[]>(this.blogUrl)
   }
 
+  // get blog by id
+  getBlogById(id: string) {
+    return this.http.get(this.blogDelUrl + id)
+  }
+
   //post blog
   addBlog(title: any, author: any, date: any, content: any) {
     const blog = {
@@ -28,5 +33,17 @@ export class BlogService {
   deleteBlog(id: string) {
     return this.http.delete(this.blogDelUrl + id)
   }
+
+  updateBlog(title: any, author: any, date: any, content: any, id: string) {
+    const obj = {
+      title,
+      author,
+      date,
+      content
+      };
+    this.http.put(this.blogDelUrl + id, obj)
+      .subscribe(() => console.log('Done'));
+  }
+  
  
 }
