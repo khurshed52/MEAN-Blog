@@ -8,9 +8,35 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" type="text/css">
+<style>
+  
+.loading {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  right: 0%;
+  bottom: 0%;
+  background-color: #fff;  
+}
 
+.loading img {
+    position: absolute;
+    width: 30%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+</style>
 </head>
 <body>
-  <app-root></app-root>
+  <app-root>
+    <div class="loading">
+      <img src="assets/images/loader.gif"/>
+    </div>
+  </app-root>
 </body>
 </html>
