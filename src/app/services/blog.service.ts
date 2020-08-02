@@ -10,11 +10,15 @@ export class BlogService {
   constructor(private http: HttpClient) { }
   private blogUrl= 'https://user-mean-test.herokuapp.com/api/blog';
   private blogDelUrl= 'https://user-mean-test.herokuapp.com/api/blog/';
-
+  private dataUrl = 'http://localhost:3000/api/data';
   
   // get blog
   getData():Observable<Blog[]> {
     return this.http.get<Blog[]>(this.blogUrl)
+  }
+
+  getBlogByIdWebApi(id: number):Observable<Blog[]>{
+    return this.http.get<Blog[]>(this.blogUrl + "/" + id)
   }
 
   // get blog by id
@@ -45,5 +49,8 @@ export class BlogService {
       .subscribe(() => console.log('Done'));
   }
   
+  getDataBlog():Observable<any> {
+    return this.http.get(this.dataUrl)
+  }
  
 }

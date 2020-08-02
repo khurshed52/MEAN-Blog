@@ -32,8 +32,27 @@
 </div>
 
 
-  <form class="create-form" [formGroup]="exampleForm" novalidate (ngSubmit)="onSubmit(exampleForm.value)">
+  <!-- <form class="create-form" [formGroup]="exampleForm" novalidate (ngSubmit)="onSubmit(exampleForm.value)">
     <input type="text" formControlName="name" #name>
     <input type="text" formControlName="age" #age>
     <button type="submit" [disabled]="exampleForm.pristine || exampleForm.invalid">Create</button>
+  </form> -->
+
+  <form [formGroup]="quilForm" (ngSubmit)="onSubmit()">
+    <!-- <div>
+      <input type="text" formControlName="text" #text/>
+    </div> -->
+    <div>
+      <quill-editor placeholder="Enter Text" formControlName="text" #text> </quill-editor>
+    </div>
+    <button type="submit" mat-raised-button color="warn"> Save </button>
   </form>
+
+ <div [innerHTML]='textArr'> </div>
+
+ <h1> RXJS </h1>
+
+<div *ngFor="let item of data">
+  <p>{{item.name}}</p>
+  <p>{{item.price | currency:'₹'}}</p>
+</div>

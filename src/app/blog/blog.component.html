@@ -34,6 +34,11 @@
             <mat-label>Content</mat-label>
             <input matInput formControlName="content" #content>
           </mat-form-field>
+          <!-- <div>
+            <quill-editor placeholder="Enter Text"
+            formControlName="content">
+                </quill-editor>
+          </div> -->
           <div class="modal-footer">
             <button type="button" mat-raised-button color="warn" data-dismiss="modal">Close</button>
             <button mat-raised-button color="primary" (click)="reset()">Reset</button>
@@ -55,7 +60,7 @@
 <ng-template #loaded>
   <!--data -->
 <div class="row">
-  <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-12" *ngFor="let item of blog">
+  <div class="col-md-6 col-lg-4 col-xl-4 col-sm-6 col-12" *ngFor="let item of blog">
     <div class="card-area">
         <div class="title-area">
           <div class="title">
@@ -107,3 +112,4 @@
   </div>
   </div>
 </ng-template>
+

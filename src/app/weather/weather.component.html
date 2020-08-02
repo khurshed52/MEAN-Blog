@@ -1,0 +1,29 @@
+<div class="weather-card" *ngFor="let item of weatherData">
+    <div class="image-section">
+        <div *ngFor="let mainList of item?.weather">
+             <p >{{mainList.main}}</p>
+             <p> {{mainList.description}}</p>
+             <img [src]='"http://openweathermap.org/img/w/" + mainList.icon + ".png"'/>
+        </div>
+       
+    </div>
+    <div class="info-section">
+        <div class="wave"></div>
+        <div class="layer-1"></div>
+        <div class="layer-2"></div>
+        <div class="layer-3"></div>
+        <div class="contents">
+            <h1>{{item.main.temp}}<span class="deg">&deg;</span> <span> C </span></h1>
+                <h3>{{item.name}}</h3>
+            <small>{{tDate}}</small>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <tr *ngFor="let item of emloyees">
+        <td> {{item.code}}</td>
+        <td> {{item.name|mypipe:item.gender}}</td>
+        <td> {{item.gender}}</td>
+    </tr>
+</table>

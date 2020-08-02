@@ -2,6 +2,32 @@ const express = require('express');
 const router= express.Router();
 const Blog = require('../models/blog');
 
+dataNew = [
+    {
+      id: 1,
+      name: "Leanne Graham",
+      username: "Bret",
+      email: "Sincere@april.biz"
+    },
+    {
+      id: 2,
+      name: "Ervin Howell",
+      username: "Antonette",
+      email: "Shanna@melissa.tv"
+    },
+    {
+        id: 3,
+        name: "Ervin test", 
+        username: "Antonette js",
+        email: "test.tv"
+      },
+    
+  ];
+  
+  router.get('/data', (req, res)=> {
+      res.send(dataNew)
+  })
+
 router.get('/blog', (req, res)=> {
    Blog.find((err, blog)=> {
        res.send(blog)

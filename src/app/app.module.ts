@@ -20,12 +20,22 @@ import { environment } from '../environments/environment';
 import { EmployeService } from './services/employe.service';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { QuillModule } from 'ngx-quill';
+import { StudentComponent } from './student/student.component'
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { WeatherComponent } from './weather/weather.component';
+import { MypipePipe } from './mypipe.pipe';
+import { CookieService } from 'ngx-cookie-service';
+
 @NgModule({
   declarations: [
     AppComponent,
     BlogComponent,
     EditComponent,
     EmployeComponent,
+    StudentComponent,
+    WeatherComponent,
+    MypipePipe,
   ],
   imports: [
     BrowserModule,
@@ -42,12 +52,15 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     Ng2SearchPipeModule,
     MatButtonModule,
     MatTooltipModule,
+    Ng2SmartTableModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    QuillModule
   ],
   providers: [
     MatNativeDateModule,
-    EmployeService
+    EmployeService,
+    CookieService 
   ],
   bootstrap: [AppComponent]
 })

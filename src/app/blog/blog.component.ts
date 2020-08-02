@@ -1,10 +1,11 @@
+import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../services/blog.service';
 import { Blog } from '../services/blog';
 import { FormGroup, FormControl, FormBuilder, Validators  } from '@angular/forms';
 import { Router } from '@angular/router';
-declare var $:any;  Swal
 declare var Swal:any;
+declare var $:any;
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
@@ -14,15 +15,21 @@ export class BlogComponent implements OnInit {
   public blog:Blog[];
   blogForm: FormGroup;
   options = { autoHide: false, scrollbarMinSize: 50 }; // scroll 
-  public loading:boolean = true
+  public loading:boolean = true;
+  id:any
   constructor(private _blog: BlogService, private fb: FormBuilder, private router: Router ) { 
     this.blogForm = this.fb.group({
       title:['', Validators.required],
       author:['', Validators.required],
       date:['', Validators.required],
       content:['', Validators.required],
+      val:['']
     })
   }
+
+  editorStyle = {
+    height: '200px'
+  };
 
   ngOnInit() {
     this._blog.getData().subscribe(
@@ -31,6 +38,8 @@ export class BlogComponent implements OnInit {
         this.loading = false
       }
     )
+
+    this._blog.getBlogByIdWebApi(101).subscribe((data) => console.log(data));
   }
 
   //save data
