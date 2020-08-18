@@ -1,0 +1,31 @@
+<!--student data here -->
+
+<!--container start-->
+<div class="container">
+    <ul>
+    <li *ngFor="let classItem of student | groupBy:'class'">
+        Class: {{classItem.key}}
+        <ul>
+            <li *ngFor="let sectionItem of classItem.value | groupBy:'section'">
+               Section:  {{sectionItem.key}}
+                <ul>
+                    <li class="student_tool" *ngFor="let studentItem of sectionItem.value">
+                        <button class="name_btn" [attr.data-target]="'#' + studentItem.name" (click)="showDrawer(studentItem.name)"> {{studentItem.name}}</button>
+                         <!--tooltip data start-->
+              <div class="tool" [attr.id]='studentItem.name'>
+                <p> <strong> Name: </strong> {{studentItem.name}} </p>
+                <p> <strong> Age: </strong>{{studentItem.age}} </p>
+                <p> <strong> Gender:  </strong> {{studentItem.gender}} </p>
+                <p>  <strong> Sports </strong> {{studentItem.sports}} </p>
+            </div>
+          <!--tooltip data end -->    
+                        
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+</div>
+
+<!--container end -->

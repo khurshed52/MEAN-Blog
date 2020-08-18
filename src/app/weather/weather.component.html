@@ -23,7 +23,7 @@
 <table class="table">
     <tr *ngFor="let item of emloyees">
         <td> {{item.code}}</td>
-        <td> {{item.name|mypipe:item.gender}}</td>
+        <td> <img [src]='"https://joeschmoe.io/api/v1/" + item.name' /> {{item.name|mypipe:item.gender}}</td>
         <td> {{item.gender}}</td>
     </tr>
 </table>

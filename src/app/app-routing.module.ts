@@ -5,13 +5,14 @@ import { BlogComponent } from './blog/blog.component';
 import { EditComponent } from './edit/edit.component';
 import { EmployeComponent } from './employe/employe.component';
 import { WeatherComponent } from './weather/weather.component';
-
+import { StudentsComponent } from './students/students.component';
 const routes: Routes = [
-  { path: '', redirectTo: '/blog', pathMatch: 'full' },
+  { path: '', redirectTo: '/students', pathMatch: 'full' },
   { path: 'blog', component: BlogComponent },
   {path: 'employe', component: EmployeComponent},
   {path: 'edit/:id', component: EditComponent},
-  {path: 'weather', component: WeatherComponent}
+  {path: 'weather', component: WeatherComponent},
+  {path: 'students', component: StudentsComponent}
 ];
 
 

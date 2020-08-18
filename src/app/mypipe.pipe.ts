@@ -5,11 +5,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class MypipePipe implements PipeTransform {
 
-  transform(value: string, gender: string): string {
-    if(gender.toLowerCase()=="male")
-    return "Mr. " + value
-    else 
-    return "Miss " + value
+  transform(value: string, test: string): string {
+    if(test.toLowerCase()=="male") {
+       return "Mr. " + value
+    }
+   
+    else  {
+       return "Miss. " + value
+    }
+   
   }
 
 }

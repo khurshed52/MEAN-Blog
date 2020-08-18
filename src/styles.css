@@ -14,11 +14,18 @@ body {
     background: #f5f5f5 !important;
     font-family: 'Barlow', sans-serif !important;
     font-size: 15px;
+    overflow: hidden;
 }
 
-ul {
+ ul {
     margin: 0px !important;
     padding: 0px !important;
+} 
+
+/*** globally component margin remove**/
+
+p {
+    margin: 0px !important;
 }
 
 h1, h2, h3, h4, h5, h6  {

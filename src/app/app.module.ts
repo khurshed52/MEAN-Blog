@@ -26,6 +26,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { WeatherComponent } from './weather/weather.component';
 import { MypipePipe } from './mypipe.pipe';
 import { CookieService } from 'ngx-cookie-service';
+import { StudentsComponent } from './students/students.component';
+import { GroupByPipe } from './group-by.pipe';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { CookieService } from 'ngx-cookie-service';
     StudentComponent,
     WeatherComponent,
     MypipePipe,
+    StudentsComponent,
+    GroupByPipe,
   ],
   imports: [
     BrowserModule,

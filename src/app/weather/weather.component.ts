@@ -28,7 +28,7 @@ export class WeatherComponent implements OnInit {
   }
 
   public emloyees:any = [
-    {code: 1 , name: "khurshed", gender:'male'},
+    {code: 1 , name: "khurshed", gender:'male', img:'https://joeschmoe.io/api/v1/khan'},
     {code: 2 , name: "Shujaat", gender:'male'},
     {code: 3 , name: "Chandu", gender:'female'},
     {code: 4 , name: "Shab", gender:'female'}
