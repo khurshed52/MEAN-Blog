@@ -13,6 +13,7 @@ declare var $:any;
 })
 export class BlogComponent implements OnInit {
   public blog:Blog[];
+  public showModal:boolean = false;
   blogForm: FormGroup;
   options = { autoHide: false, scrollbarMinSize: 50 }; // scroll 
   public loading:boolean = true;
@@ -32,28 +33,40 @@ export class BlogComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.getBlog();
+    this._blog.getBlogByIdWebApi(101).subscribe((data) => console.log(data));
+  }
+
+
+  // get blog
+  getBlog() {
     this._blog.getData().subscribe(
       data => {
         this.blog = data;
         this.loading = false
       }
     )
-
-    this._blog.getBlogByIdWebApi(101).subscribe((data) => console.log(data));
   }
 
   //save data
-  public save(title: any, author: any, date: any, content: any) {
-      this._blog.addBlog(title, author, date, content).subscribe();
-      this.blogForm.reset();
-      $("#blogModal").modal("hide");
-      Swal.fire({
-        position: 'top-end',
-        type: 'success',
-        title: 'Your blog has been saved',
-        showConfirmButton: false,
-        timer: 1500
-      })
+  public onSubmit() {
+    if(this.blogForm.valid) {
+      this._blog.addBlog(this.blogForm.value).subscribe((res)=> {
+        console.log(res);
+        this.getBlog();
+        this.blogForm.reset();
+        $("#blogModal").modal("hide");
+        Swal.fire({
+          position: 'top-end',
+          type: 'success',
+          title: 'Your blog has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      });
+
+    }
+     
   }
 
   //reset form
@@ -66,12 +79,6 @@ export class BlogComponent implements OnInit {
    this.router.navigate([`/edit/${id}`])
   }
 
-  // refresh 
-  public refresh() {
-    this._blog.getData().subscribe(
-      data => this.blog = data
-    )
-  }
   // delete data
   public delete(id: any) {
     Swal.fire({
@@ -84,22 +91,15 @@ export class BlogComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.value) {
-        let blogArr = this.blog;
-      this._blog.deleteBlog(id).subscribe(
-        data => {
-          for(let i = 0; i < blogArr.length; i++) {
-            if(blogArr[i]._id === id) {
-              blogArr.splice(i, 1)
-            }
-          }
-        }
-      )
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success',
-           1500
-        )
+        this._blog.deleteBlog(id).subscribe((res)=> {
+          this.getBlog();
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success',
+             1500
+          )
+        })
       }
     })  
   }

@@ -1,5 +1,4 @@
 <button mat-raised-button color="primary" data-toggle="modal" data-target="#blogModal"> Add Blog </button>
-<button mat-raised-button color="accent" (click)="refresh()"> Refresh </button>
 <!--form modal-->
 <div class="modal fade" id="blogModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
@@ -12,7 +11,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="blogForm" class="example-form">
+        <form [formGroup]="blogForm" class="example-form" (ngSubmit)=onSubmit()>
           <mat-form-field class="example-full-width">
             <mat-label>Title</mat-label>
             <input matInput formControlName="title" #title>
@@ -42,8 +41,7 @@
           <div class="modal-footer">
             <button type="button" mat-raised-button color="warn" data-dismiss="modal">Close</button>
             <button mat-raised-button color="primary" (click)="reset()">Reset</button>
-            <button mat-raised-button color="accent" [disabled]="blogForm.pristine || blogForm.invalid"
-            (click)="save(title.value, author.value, date.value, content.value )"> Save </button>
+            <button mat-raised-button color="accent" [disabled]="blogForm.pristine || blogForm.invalid"> Save </button>
           </div>
          
         </form>

@@ -27,10 +27,7 @@ export class BlogService {
   }
 
   //post blog
-  addBlog(title: any, author: any, date: any, content: any) {
-    const blog = {
-      title, author, date, content
-    }
+  addBlog(blog:Blog) {
     return this.http.post(this.blogUrl, blog)
   }
 
